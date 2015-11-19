@@ -6,63 +6,55 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, malarkey, FBcommunication) {
+  function MainController($scope, $facebook, FBcommunication) {
     var vm = this;
-    console.log('// fb');
-    console.log(window.FB);
-    
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1441190211733;
-    vm.showToastr = showToastr;
+
     vm.isLoggedIn = false;
     vm.login = login;
+    vm.logout = logout;
     vm.refresh = refresh;
-    activate();
+    vm.user = {};
+    vm.userEvents = [{
+      description: "Outdoor Winter Music Event↵↵Details to come...",
+      end_time: "2016-06-26T16:00:00+1000",
+      id: "757180467675760",
+      name: "Frosty Fraptangle - 2016"
+    }, {
+      description: "Outdoor Winter Music Event↵↵Details to come...",
+      end_time: "2016-06-26T16:00:00+1000",
+      id: "757180467675760",
+      name: "Frosty Fraptangle - 2016"
+    }];
 
-    
-    
     function login() {
-      $facebook.login().then(function() {
-        refresh();
+      $facebook.login().then(function(data) {
+        vm.refresh();
       });
     }
     
+    function logout() {
+      $facebook.logout().then(function(data) {
+        vm.refresh();
+      });
+    }
+
     function refresh() {
       $facebook.api("/me").then( 
         function(response) {
-          vm.welcomeMsg = "Welcome " + response.name;
+          vm.user = response;
           vm.isLoggedIn = true;
+          // refresh events list
+          FBcommunication.getUserEvents(vm.user)
+            .then(function(events){
+              console.log('// events')
+              console.log(events)
+              vm.userEvents = events.data;
+            });
         },
         function(err) {
           vm.welcomeMsg = "Please log in";
         });
     }
-
-    function activate() {
-      getWebDevTec();
-      
-      FBcommunication.getUser().then(function(response){
-        console.log('// FB response');
-        console.log(response);
-      });
-
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
-    }
-
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      vm.classAnimation = '';
-    }
-
-    function getWebDevTec() {
-      vm.awesomeThings = webDevTec.getTec();
-
-      angular.forEach(vm.awesomeThings, function(awesomeThing) {
-        awesomeThing.rank = Math.random();
-      });
-    }
+    
   }
 })();

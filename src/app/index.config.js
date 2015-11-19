@@ -6,15 +6,9 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastr, $facebookProvider) {
+  function config($logProvider, $facebookProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
-
-    // Set options third-party lib
-    toastr.options.timeOut = 3000;
-    toastr.options.positionClass = 'toast-top-right';
-    toastr.options.preventDuplicates = true;
-    toastr.options.progressBar = true;
 
     // FB config
     $facebookProvider.setCustomInit({
@@ -22,8 +16,9 @@
       status: true, 
       cookie: true, 
       xfbml: true,
-      version: 'v2.4'
+      version: 'v2.5'
     });
+    $facebookProvider.setPermissions("user_events,rsvp_event");
   }
 
 })();
