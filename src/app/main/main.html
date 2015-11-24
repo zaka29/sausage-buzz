@@ -1,21 +1,25 @@
-<div class="container">
- <div id="fb-root"></div>
-  
+<div class="container-liquid">
+    <div id="fb-root"></div>
+    <div class="header-main">
+        <p class="text-right">
+            <button type="button" class="btn btn-lg btn-success" ng-click="vm.login()">Log In</button>
+            <button type="button" class="btn btn-lg btn-info" ng-click="vm.logout()">Log Off</button>
+        </p>
+        <div class="logo-box">
+            <div class="logo-inner-box">
+                <img src="assets/images/Deer_icon.png">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <div ng-repeat="event in vm.userEvents">
+                    <event-fb user-event="event"></event-fb>
+                </div>
 
-  <div class="jumbotron text-center">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">
-      <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-      Always a pleasure scaffolding your apps.
-    </p>
-    <p>
-      <button type="button" class="btn btn-lg btn-success" ng-click="vm.login()">Log In</button>
-      <button type="button" class="btn btn-lg btn-info" ng-click="vm.logout()">Log Off</button>
-    </p>
-  </div>
-  <div ng-repeat="event in vm.userEvents">
-    <h3>{{event.name}}</h3>
-    <p>{{event.description}}</p>
-  </div>
-
+            </div>         
+        </div>
+    </div>
 </div>

@@ -14,17 +14,7 @@
     vm.logout = logout;
     vm.refresh = refresh;
     vm.user = {};
-    vm.userEvents = [{
-      description: "Outdoor Winter Music Event↵↵Details to come...",
-      end_time: "2016-06-26T16:00:00+1000",
-      id: "757180467675760",
-      name: "Frosty Fraptangle - 2016"
-    }, {
-      description: "Outdoor Winter Music Event↵↵Details to come...",
-      end_time: "2016-06-26T16:00:00+1000",
-      id: "757180467675760",
-      name: "Frosty Fraptangle - 2016"
-    }];
+    vm.userEvents = [];
 
     function login() {
       $facebook.login().then(function(data) {
@@ -52,6 +42,8 @@
             });
         },
         function(err) {
+          console.log('// err');
+          console.log(err)
           vm.welcomeMsg = "Please log in";
         });
     }

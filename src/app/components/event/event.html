@@ -1,0 +1,17 @@
+<div class="media-container">
+	<div class="media-thumbnail-image">
+	    <img src="{{vm.userEvent.cover.source}}">
+	</div>
+	<div class="media-mid-content">
+		<h3>{{vm.userEvent.name}}</h3>
+		<div class="content-date">
+			<span class="glyphicon glyphicon-calendar"></span>
+			<span>{{vm.convertDate(vm.userEvent.start_time)}}</span>	
+		</div>
+		<div class="content-place">
+			<span class="glyphicon glyphicon-map-marker"></span>
+			<span>{{vm.userEvent.place.name}}</span>	
+		</div>
+	</div>
+	<div class="media-expand"></div>
+</div>

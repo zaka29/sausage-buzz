@@ -16,14 +16,13 @@
 
     function getUserEvents (user) {
       var deferred = $q.defer();
-      $facebook.api('/me/events').then( 
+      $facebook.api('/me/events?fields=cover,name,start_time,place,description').then( 
         function(response) {
           console.log('Event data be here');
           console.log(response);
           deferred.resolve(response);
         },
         function(err) {
-          vm.welcomeMsg = "Please log in";
           deferred.reject(err);
         });
       return deferred.promise;
