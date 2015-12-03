@@ -3,15 +3,33 @@
     background-color: #fff;
     margin-bottom: 15px;
     border-radius: 10px;
-    min-height: 115px;
+    min-height: 100px;
+    border: 1px solid #61AAB0;
+    cursor: pointer;
 	&>div {
 		flex:1;
 	}
 	&>div:first-child {
 		flex:none;
-		width: 105px;
-		img {
-			width: 100%;
+		width: 150px;
+		.thumb-img {
+			width: 110px;
+		    height: 100px;
+		    overflow: hidden;
+		    position: relative;
+		    border-top-left-radius: 10px;
+		    border-bottom-left-radius: 10px;
+		    margin: 0;
+		    border-right: 10px solid #61AAB0;
+			img {
+				max-width: 300px;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: -50%;
+				right: 0;
+				bottom: 0;
+			}
 		}
 	}
 }
@@ -22,6 +40,30 @@
 		font-size: 20px;
 		font-weight: normal;
 		color: #4E553D;
-		line-height: 24px;	
+		line-height: 20px;
+    	margin-top: 10px;
+    	white-space: nowrap;
+    	overflow: hidden;
+		text-overflow: ellipsis;
 	}
+}
+.media-expand {
+	text-align: right;
+    font-size: 28px;
+    color: #61AAB0;
+    padding-right: 30px;
+    .glyphicon {
+    	line-height: 100px;	
+    }
+}
+.content-place,
+.content-date {
+	font-size: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.content-date {
+	color: #61AAB0;
+	margin-bottom: 3px;
 }
