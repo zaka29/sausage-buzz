@@ -15,6 +15,7 @@
     vm.refresh = refresh;
     vm.user = {};
     vm.userEvents = [];
+    
 
     function login() {
       $facebook.login().then(function(data) {

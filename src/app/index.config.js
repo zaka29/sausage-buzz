@@ -12,7 +12,7 @@
 
     // FB config
     $facebookProvider.setCustomInit({
-      appId: '658682964266918',
+      appId: '703774556424425',
       status: true, 
       cookie: true, 
       xfbml: true,

@@ -21,9 +21,11 @@
     return directive;
 
     /** @ngInject */
-    function EventController() {
+    function EventController(FBcommunication) {
       var vm = this;
       vm.convertDate = convertDate;
+      vm.clickTest = clickTest;
+
       // "vm.creation" is a vaible by directive option "bindToController: true"
       // vm.relativeDate = moment(vm.creationDate).fromNow();
 
@@ -31,6 +33,11 @@
         var date = new Date(dateString);
         return date.toDateString();
       }
+
+      function clickTest(eventId){
+        FBcommunication.getEventAttendees(eventId);
+        console.log('clicked..' + eventId); 
+      };
 
     }
   }
